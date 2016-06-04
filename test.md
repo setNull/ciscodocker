@@ -54,4 +54,20 @@ docker cp maven
 
 https://git.oschina.net/jack1225/build-nginx/
 
+
+
+REGISTRY_URL = x.x.x:5000
+cp /root/apache-mave... tar.gz $WORKSPACE/maven
+docker build -t cisco/maven:3.3.3 $WORKSPACE/maven
+if docker ps -a | grep -i maven: then docker rm -f maven
+fi
+docker create --name maven cisco/maven:3.3.3
+docker cp maven:/hello/target/hello.war $WORKSPACE/hello
+docker build -t $REGISTRY_URL/cisco/hello:1.0 $WORKSPACE/hello
+docker push $REGISTRY_URL/cisco/hello:1.0
+if docker ps -a | grep -i hello; then
+   docker rm -f hello
+fi
+docker run -d -p 80:8080 --name $REGISTRY_URL/cisco/hello:1.0
+
 ```
