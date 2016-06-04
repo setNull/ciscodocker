@@ -9,6 +9,9 @@
     other_args="--graph=/docker --exec-driver=lxc --selinux-enabled"  
     # 删除--exec-driver=lxc即可，改为  
     other_args="--graph=/docker --selinux-enabled"  
+    
+    visudo /etc/sudoers
+
   
   vim /usr/lib/systemd/system/docker.service 
   
