@@ -4,6 +4,12 @@
   docker tag cisco/jenkins 192.168.143.191:5000/jenkins 
   
   
+  vim  /etc/sysconfig/docker  
+    ------------  
+    other_args="--graph=/docker --exec-driver=lxc --selinux-enabled"  
+    # 删除--exec-driver=lxc即可，改为  
+    other_args="--graph=/docker --selinux-enabled"  
+  
   vim /usr/lib/systemd/system/docker.service 
   
   vim /etc/sysconfig/docker
@@ -36,5 +42,11 @@ clone git https://git.oschina.net/jack1225/build-nginx
 
 shell:
 docker build -t cisco/php:5.1 $WORKSPACE(jenkins clone代码回来的路径) / php-fpm
+
+copy maven 打好的包
+
+docker cp maven 
+
+
 
 ```
