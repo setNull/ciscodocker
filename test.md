@@ -30,4 +30,11 @@
 git Client Plug-In
 
 Git Parameter Plug-In
+
+
+clone git https://git.oschina.net/jack1225/build-nginx
+
+shell:
+docker build -t cisco/php:5.1 $WORKSPACE(jenkins clone代码回来的路径) / php-fpm
+
 ```
