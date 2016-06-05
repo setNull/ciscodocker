@@ -70,4 +70,6 @@ if docker ps -a | grep -i hello; then
 fi
 docker run -d -p 80:8080 --name $REGISTRY_URL/cisco/hello:1.0
 
+
+docker inspect --format='{{.NetworkSettings.IPAddress}}'  4f62a14bab54
 ```
